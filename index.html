@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102018">
+  <meta name="description" content="Discover cars and motorcycles, connect with sellers, and create vehicle listings with Apni Gari, a marketplace built for Pakistan.">
+  <meta name="robots" content="index,follow">
+  <title>Apni Gari — Find your next ride</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17231b;
+      --muted: #5f6f63;
+      --green: #22c55e;
+      --green-dark: #123521;
+      --paper: #f5f8f4;
+      --line: #dfe8df;
+      font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #fff; color: var(--ink); }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .topbar { height: 76px; display: flex; align-items: center; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.94); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-size: 1.1rem; font-weight: 800; letter-spacing: -.04em; }
+    .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; background: var(--green); color: #092111; font-weight: 900; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { color: var(--muted); font-size: .94rem; font-weight: 650; text-decoration: none; }
+    .nav-links a:hover, .footer a:hover { color: var(--green-dark); }
+    .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 9px; padding: 0 20px; border: 0; border-radius: 12px; background: var(--green); color: #092111; font-weight: 800; text-decoration: none; transition: transform .18s ease, background .18s ease; }
+    .button:hover { transform: translateY(-2px); background: #42d875; }
+    .button-outline { border: 1px solid #cdd9ce; background: white; color: var(--ink); }
+    .hero { overflow: hidden; background: var(--paper); }
+    .hero-grid { min-height: 590px; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 38px; padding-block: 68px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: #217442; font-size: .8rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--green); }
+    h1 { max-width: 650px; margin: 18px 0; font-size: clamp(3rem, 6vw, 5.4rem); line-height: .99; letter-spacing: -.075em; }
+    h1 span { color: #23964b; }
+    .hero-copy { max-width: 520px; color: var(--muted); font-size: 1.12rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .launch-note { margin-top: 18px; color: #77847a; font-size: .86rem; }
+    .art { position: relative; min-height: 400px; display: grid; place-items: center; }
+    .art-disc { position: absolute; width: min(390px, 80vw); aspect-ratio: 1; border-radius: 50%; background: #dff5e4; }
+    .art-card { position: relative; width: min(440px, 100%); padding: 18px; border: 1px solid rgba(255,255,255,.75); border-radius: 28px; background: rgba(255,255,255,.75); box-shadow: 0 28px 75px rgba(25, 72, 42, .14); transform: rotate(-3deg); }
+    .art-head { display: flex; align-items: center; justify-content: space-between; padding: 4px 4px 18px; }
+    .art-head strong { font-size: .96rem; }
+    .art-head small { color: var(--muted); }
+    .ride { min-height: 230px; display: grid; place-items: center; overflow: hidden; border-radius: 20px; background: linear-gradient(145deg, #e8f7eb, #c8efcf); }
+    .ride svg { width: 94%; max-width: 390px; }
+    .art-foot { display: flex; align-items: center; justify-content: space-between; padding: 15px 5px 2px; }
+    .art-foot span { color: var(--muted); font-size: .86rem; }
+    .price-pill { padding: 7px 12px; border-radius: 999px; background: #e9f8ec; color: #176331; font-size: .82rem; font-weight: 800; }
+    .float-tag { position: absolute; right: -5px; bottom: 38px; padding: 13px 17px; border: 1px solid var(--line); border-radius: 15px; background: white; box-shadow: 0 14px 34px rgba(30,50,35,.11); font-size: .9rem; font-weight: 750; transform: rotate(4deg); }
+    section { padding-block: 90px; }
+    .section-head { max-width: 650px; margin: 0 auto 42px; text-align: center; }
+    .section-head h2 { margin: 12px 0; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.055em; line-height: 1.08; }
+    .section-head p { margin: 0; color: var(--muted); }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .feature { padding: 25px; border: 1px solid var(--line); border-radius: 18px; background: #fff; }
+    .icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; background: #e7f8eb; color: #187239; font-size: 1.3rem; }
+    .feature h3 { margin: 19px 0 7px; font-size: 1.12rem; }
+    .feature p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .steps-section { background: #102018; color: #fff; }
+    .steps-section .section-head p { color: #b4c5b8; }
+    .steps-section .eyebrow { color: #84e9a0; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .step { padding-top: 17px; border-top: 1px solid #40594a; }
+    .step-num { color: #78df91; font-size: .8rem; font-weight: 850; letter-spacing: .12em; }
+    .step h3 { margin: 14px 0 6px; font-size: 1.12rem; }
+    .step p { margin: 0; color: #b4c5b8; font-size: .94rem; }
+    .safety { display: grid; grid-template-columns: .85fr 1.15fr; gap: 60px; align-items: start; }
+    .safety h2 { margin: 12px 0; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.08; letter-spacing: -.055em; }
+    .safety-intro { color: var(--muted); }
+    .safety-list { display: grid; gap: 14px; }
+    .safety-item { display: grid; grid-template-columns: 30px 1fr; gap: 13px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+    .check { color: #16823a; font-weight: 900; }
+    .safety-item p { margin: 3px 0 0; color: var(--muted); font-size: .94rem; }
+    .contact-band { padding-block: 64px; background: #eaf7ed; }
+    .contact-inner { display: flex; align-items: center; justify-content: space-between; gap: 25px; }
+    .contact-inner h2 { margin: 0 0 7px; font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.1; letter-spacing: -.05em; }
+    .contact-inner p { margin: 0; color: var(--muted); }
+    .footer { padding-block: 32px; background: #0b1710; color: #edf5ef; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .footer p { margin: 8px 0 0; color: #a8b8ac; font-size: .88rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .footer a { color: #c6d5ca; font-size: .9rem; text-decoration: none; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 28px, 580px); }
+      .topbar { height: 68px; }
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: .83rem; }
+      .nav .button { display: none; }
+      .hero-grid { grid-template-columns: 1fr; gap: 18px; padding-block: 58px 42px; }
+      h1 { max-width: 520px; font-size: clamp(3.2rem, 16vw, 5rem); }
+      .art { min-height: 340px; }
+      .ride { min-height: 185px; }
+      .art-card { max-width: 420px; }
+      .float-tag { right: 0; bottom: 15px; }
+      section { padding-block: 68px; }
+      .features, .steps { grid-template-columns: 1fr; }
+      .safety { grid-template-columns: 1fr; gap: 24px; }
+      .contact-inner, .footer-row { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="Apni Gari home"><span class="brand-mark">AG</span><span>Apni Gari</span></a>
+    <nav class="nav-links" aria-label="Main navigation"><a href="#how-it-works">How it works</a><a href="#safety">Safety</a><a href="privacy.html">Privacy</a></nav>
+    <a class="button" href="mailto:apnigari25@gmail.com">Get in touch <span aria-hidden="true">↗</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Made for the road ahead</span>
+        <h1>Find your next <span>ride.</span></h1>
+        <p class="hero-copy">Discover cars and motorcycles, connect with sellers, and create vehicle listings with Apni Gari—a marketplace built for Pakistan.</p>
+        <div class="hero-actions"><a class="button" href="mailto:apnigari25@gmail.com?subject=Apni%20Gari">Contact Apni Gari <span aria-hidden="true">↗</span></a><a class="button button-outline" href="#features">Explore features <span aria-hidden="true">↓</span></a></div>
+        <p class="launch-note">Questions or feedback? We’d love to hear from you.</p>
+      </div>
+      <div class="art" aria-label="Illustration of a car listing">
+        <div class="art-disc" aria-hidden="true"></div>
+        <div class="art-card">
+          <div class="art-head"><strong>Find a vehicle that fits</strong><small>Apni Gari</small></div>
+          <div class="ride">
+            <svg viewBox="0 0 480 250" role="img" aria-label="Green illustration of a car">
+              <ellipse cx="240" cy="202" rx="185" ry="17" fill="#aeddb7"/>
+              <path d="M77 163c5-22 21-39 44-48l61-24c16-7 31-11 50-11h69c24 0 44 9 60 28l29 35c18 4 30 17 33 36l2 21H64l2-21c1-8 4-13 11-16Z" fill="#173b25"/>
+              <path d="m190 105-56 22c-11 5-18 14-21 25h116v-52h-18c-8 0-14 1-21 5Z" fill="#c9efd0"/>
+              <path d="M245 100v52h119l-22-27c-13-16-28-25-48-25h-49Z" fill="#c9efd0"/>
+              <path d="M68 172h54m250 0h50" stroke="#69d581" stroke-width="8" stroke-linecap="round"/>
+              <circle cx="142" cy="190" r="29" fill="#102018"/><circle cx="142" cy="190" r="13" fill="#f3f7f2"/>
+              <circle cx="361" cy="190" r="29" fill="#102018"/><circle cx="361" cy="190" r="13" fill="#f3f7f2"/>
+              <path d="M95 155h38m252 0h35" stroke="#f4f8f3" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="art-foot"><span>Cars · Motorcycles · Community</span><span class="price-pill">Your next ride</span></div>
+        </div>
+        <div class="float-tag"><span aria-hidden="true">✦</span> Browse at your own pace</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">One place to get started</span><h2>Vehicle shopping, made more connected.</h2><p>Explore listings and talk directly with other people using tools designed around the buying and selling journey.</p></div>
+      <div class="features">
+        <article class="feature"><span class="icon" aria-hidden="true">⌕</span><h3>Explore vehicle listings</h3><p>Browse cars and motorcycles with the details and photos sellers choose to share.</p></article>
+        <article class="feature"><span class="icon" aria-hidden="true">＋</span><h3>Post your own listing</h3><p>Add vehicle information, a price, location, and photos to introduce your vehicle to potential buyers.</p></article>
+        <article class="feature"><span class="icon" aria-hidden="true">↗</span><h3>Connect with sellers</h3><p>Use in-app chat, voice notes, and calls to discuss a listing and arrange next steps.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps-section" id="how-it-works">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">Simple from the start</span><h2>A clearer way to connect.</h2><p>Apni Gari helps buyers and sellers start a conversation. You stay in control of your choices.</p></div>
+      <div class="steps">
+        <article class="step"><span class="step-num">01 / EXPLORE</span><h3>Find listings</h3><p>Look through vehicle details and photos, and use location features when you choose.</p></article>
+        <article class="step"><span class="step-num">02 / CONNECT</span><h3>Ask your questions</h3><p>Contact the seller in the app to learn more about the vehicle and its availability.</p></article>
+        <article class="step"><span class="step-num">03 / DECIDE</span><h3>Make your own checks</h3><p>Inspect the vehicle and documents in person before agreeing to a purchase or payment.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="safety">
+    <div class="wrap safety">
+      <div><span class="eyebrow">Stay in control</span><h2>Take your time. Check the details.</h2><p class="safety-intro">Apni Gari helps people find and discuss vehicles. Listings and account indicators are not a substitute for your own checks.</p></div>
+      <div class="safety-list">
+        <article class="safety-item"><span class="check" aria-hidden="true">✓</span><div><strong>Inspect before you decide</strong><p>See the vehicle in person and check its condition, ownership, and documents.</p></div></article>
+        <article class="safety-item"><span class="check" aria-hidden="true">✓</span><div><strong>Use care with payments</strong><p>Understand the terms directly with the other party. Apni Gari does not process vehicle-sale payments.</p></div></article>
+        <article class="safety-item"><span class="check" aria-hidden="true">✓</span><div><strong>Protect personal information</strong><p>Share only the information needed to discuss a vehicle. Review what is visible on your profile and listings.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-band">
+    <div class="wrap contact-inner"><div><h2>We’re here to help.</h2><p>Contact us with questions about Apni Gari, your account, or your data.</p></div><a class="button" href="mailto:apnigari25@gmail.com">apnigari25@gmail.com <span aria-hidden="true">↗</span></a></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-row">
+    <div><a class="brand" href="index.html"><span class="brand-mark">AG</span><span>Apni Gari</span></a><p>A vehicle marketplace for Pakistan.</p></div>
+    <nav class="footer-links" aria-label="Legal links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="delete-account.html">Delete account</a><a href="mailto:apnigari25@gmail.com">Contact</a></nav>
+  </div>
+</footer>
+</body>
+</html>
